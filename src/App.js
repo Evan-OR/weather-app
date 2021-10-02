@@ -33,7 +33,7 @@ function App() {
       const hourlyData = await h_promise.json();
       setHourlyData(hourlyData);
       const d_promise = await fetch(
-        `https:api.openweathermap.org/data/2.5/forecast/daily?q=${searchValue}&cnt=${16}&appid=${api_key}&units=metric`
+        `https://api.openweathermap.org/data/2.5/forecast/daily?q=${searchValue}&cnt=${16}&appid=${api_key}&units=metric`
       );
       const dailyData = await d_promise.json();
       setDailyData(dailyData);

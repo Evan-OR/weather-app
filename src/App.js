@@ -11,7 +11,7 @@ function App() {
   const [loading, setLoading] = useState('true');
   const [searchValue, setSearchValue] = useState('Dublin, ie');
 
-  const api_key = '9a79c7f3d400c7b58c7cd9940014db14';
+  const api_key = process.env.REACT_APP_API_KEY;
 
   const updateSearch = (search) => {
     if (search !== searchValue && search !== '') {
@@ -26,7 +26,6 @@ function App() {
     // regex.test(searchValue)
     //   ? console.log('No special characters')
     //   : console.log('Has special characters');
-
     try {
       const h_promise = await fetch(
         `https://pro.openweathermap.org/data/2.5/forecast/hourly?q=${searchValue}&appid=${api_key}&units=metric&cnt=24`

@@ -1,7 +1,7 @@
 $grey: #bfbfbf;
 $shadow-offset: 4px;
 $shadow-blur: 4px;
-$shadow-color: #1f1f1f;
+$shadow-color: #1f1f1f98;
 
 body {
   margin: 0;
@@ -62,7 +62,7 @@ code {
   align-items: center;
   user-select: none;
   margin: 10px 0 50px 0;
-  filter: drop-shadow($shadow-offset $shadow-offset $shadow-blur $shadow-color);
+  filter: drop-shadow(0 0 10px $shadow-color);
 
   .icon {
     font-size: 42px;

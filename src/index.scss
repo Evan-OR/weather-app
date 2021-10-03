@@ -12,11 +12,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-image: linear-gradient(
     to right top,
-    #0d4394,
-    #2156ae,
-    #316ac8,
-    #407fe3,
-    #4e95ff
+    #42d9ee,
+    #3acce1,
+    #31bfd4,
+    #28b3c7,
+    #1ea6ba
   );
 
   background-color: rgb(41, 41, 41);
@@ -62,6 +62,7 @@ code {
   align-items: center;
   user-select: none;
   margin: 10px 0 50px 0;
+  filter: drop-shadow($shadow-offset $shadow-offset $shadow-blur $shadow-color);
 
   .icon {
     font-size: 42px;
@@ -69,15 +70,15 @@ code {
   }
 
   .svg-shadow {
-    filter: drop-shadow(
-      $shadow-offset $shadow-offset $shadow-blur $shadow-color
-    );
+    // filter: drop-shadow(
+    //   $shadow-offset $shadow-offset $shadow-blur $shadow-color
+    // );
   }
 
   .title {
     font-size: 36px;
     font-weight: bold;
-    text-shadow: $shadow-offset $shadow-offset $shadow-blur $shadow-color;
+    // text-shadow: $shadow-offset $shadow-offset $shadow-blur $shadow-color;
   }
 }
 // .title-divider {

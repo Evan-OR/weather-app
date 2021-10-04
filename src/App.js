@@ -72,7 +72,7 @@ function App() {
         <div className="icon svg-shadow">
           <i className="fas fa-globe-europe"></i>
         </div>
-        <div className="title">GLOBAL WEATHER</div>
+        <div className="title">WEATHER APP</div>
       </div>
       <div className="title-divider"></div>
       <SearchBar updateSearch={updateSearch} />

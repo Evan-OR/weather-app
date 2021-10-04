@@ -4,6 +4,7 @@ import Loading from './components/Loading';
 import SearchBar from './components/SearchBar';
 import WeatherDisplay from './components/WeatherDisplay';
 import './index.scss';
+import titleIcon from './img/titleIcon.png';
 
 function App() {
   const [hourlyData, setHourlyData] = useState(null);
@@ -69,8 +70,9 @@ function App() {
   return (
     <div className="App">
       <div className="title-icon">
-        <div className="icon svg-shadow">
-          <i className="fas fa-globe-europe"></i>
+        <div className="icon">
+          {/* <i className="fas fa-globe-europe"></i> */}
+          <img width="80px" src={titleIcon}></img>
         </div>
         <div className="title">WEATHER APP</div>
       </div>

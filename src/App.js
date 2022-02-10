@@ -44,7 +44,7 @@ function App() {
       } else {
         setLoading('false');
       }
-    } catch (error) {
+    } catch (err) {
       console.log('Fetch failed');
       setLoading('failed');
     }

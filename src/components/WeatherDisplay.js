@@ -106,10 +106,7 @@ function WeatherDisplay(props) {
                 weather={el.weather[0]}
                 pop={el.pop}
                 renderIcon={renderIcon}
-                timeInfo={{
-                  initialTime: getTimeFromTimeZoneOffset(currentData.timezone),
-                  index: hourlyWeather.indexOf(el),
-                }}
+                time={getTimeFromTimestamp(el.dt)}
               />
             ))}
           </div>

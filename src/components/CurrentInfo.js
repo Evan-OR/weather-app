@@ -19,7 +19,7 @@ function CurrentInfo(props) {
             <i className="fas fa-thermometer-three-quarters"></i>
           </div>
           <div className="column-content">
-            <div className="element-value">{roundNumber(currentHourData.main.temp_max)}&deg;</div>
+            <div className="element-value">{roundNumber(currentDayData.main.temp_max)}&deg;</div>
             <div className="element-sub-heading">High</div>
           </div>
         </div>
@@ -28,7 +28,7 @@ function CurrentInfo(props) {
             <i className="fas fa-thermometer-empty"></i>
           </div>
           <div className="column-content">
-            <div className="element-value">{roundNumber(tempInfo.temp_min)}&deg;</div>
+            <div className="element-value">{roundNumber(currentDayData.main.temp_min)}&deg;</div>
             <div className="element-sub-heading">Low</div>
           </div>
         </div>

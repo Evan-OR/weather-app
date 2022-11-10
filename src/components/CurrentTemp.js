@@ -6,7 +6,7 @@ function CurrentTemp(props) {
   const capitaliseLetters = (str) => {
     return str.charAt(0).toUpperCase() + str.slice(1);
   };
-  console.log(weather);
+
   return (
     <div className="current-temp">
       <div className="icon-temp">

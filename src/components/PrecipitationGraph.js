@@ -2,18 +2,18 @@ import React from 'react';
 import { Bar } from 'react-chartjs-2';
 
 function PrecipitationGraph(props) {
-  const { popArray, getDaysOfWeek } = props;
+  const { popArray, generateLabels } = props;
 
   const data = {
-    labels: getDaysOfWeek(),
+    labels: generateLabels(),
     datasets: [
       {
-        label: 'Precipitation %',
+        label: 'Precipitation Percentage',
         data: popArray,
-        borderColor: 'rgba(3, 152, 252, 1)',
-        backgroundColor: 'rgba(3, 152, 252, 1)',
-        pointBackgroundColor: 'rgb(3, 152, 252)',
-        pointBorderColor: 'rgb(3, 152, 252)',
+        borderColor: 'rgba(97, 189, 250, 1)',
+        backgroundColor: 'rgba(2, 58, 94, 1)',
+        pointBackgroundColor: 'rgb(25, 159, 247)',
+        pointBorderColor: 'rgb(25, 159, 247)',
         tension: 0.3,
         fill: true,
       },

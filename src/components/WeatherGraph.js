@@ -5,7 +5,7 @@ import TempGraph from './TempGraph';
 function WeatherGraph(props) {
   const { hourlyWeather, getTimeFromTimestamp, getTimeFromTimeZoneOffset } = props;
   const [displayTemp, setDisplayTemp] = useState(true);
-  const maxTempArray = hourlyWeather.map((el) => Math.round(el.main.temp_max));
+  const tempArray = hourlyWeather.map((el) => Math.round(el.main.temp_max));
   const minTempArray = hourlyWeather.map((el) => Math.round(el.main.temp_min));
   const popArray = hourlyWeather.map((el) => Math.round(el.pop * 100));
 
@@ -46,12 +46,12 @@ function WeatherGraph(props) {
       {displayTemp ? (
         <TempGraph
           generateLabels={generateLabels}
-          maxTempArray={maxTempArray}
+          tempArray={tempArray}
           minTempArray={minTempArray}
           roundToNearestFive={roundToNearestFive}
         />
       ) : (
-        <PrecipitationGraph popArray={popArray} getDaysOfWeek={getDaysOfWeek} />
+        <PrecipitationGraph popArray={popArray} generateLabels={generateLabels} />
       )}
     </div>
   );

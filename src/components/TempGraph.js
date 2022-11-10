@@ -2,20 +2,20 @@ import React from 'react';
 import { Line } from 'react-chartjs-2';
 
 function TempGraph(props) {
-  const { generateLabels, maxTempArray, minTempArray, roundToNearestFive } = props;
+  const { generateLabels, tempArray, minTempArray, roundToNearestFive } = props;
 
   const data = {
     labels: generateLabels(),
     datasets: [
       {
-        label: 'Temperature',
-        data: maxTempArray,
+        label: 'Temperature °C',
+        data: tempArray,
         borderColor: 'rgba(235, 156, 52, 1)',
         backgroundColor: 'rgba(235, 156, 52, 0.5)',
         pointBackgroundColor: 'rgb(235, 156, 52)',
         pointBorderColor: 'rgb(235, 156, 52)',
         tension: 0.3,
-        fill: false,
+        fill: true,
       },
     ],
   };
@@ -38,7 +38,7 @@ function TempGraph(props) {
     scales: {
       y: {
         min: roundToNearestFive(Math.min(...minTempArray) - 5),
-        max: roundToNearestFive(Math.max(...maxTempArray) + 5),
+        max: roundToNearestFive(Math.max(...tempArray) + 5),
         grid: {
           color: 'rgba(255, 255, 255, 0.5)',
         },
@@ -48,7 +48,7 @@ function TempGraph(props) {
         ticks: {
           color: 'rgba(255, 255, 255, 1)',
           callback: (val) => {
-            return val + '°';
+            return `${val}°`;
           },
         },
       },

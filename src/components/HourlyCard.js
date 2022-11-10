@@ -7,9 +7,7 @@ function HourlyCard(props) {
     const checkForSingleDigit = (num) => (num < 10 ? `0${num}` : num);
     const checkIfOver24 = (num) => (num > 23 ? num - 24 : num);
 
-    let hours = checkForSingleDigit(
-      checkIfOver24(initialTime.getHours() + index)
-    );
+    let hours = checkForSingleDigit(checkIfOver24(initialTime.getHours() + index * 3));
 
     return `${hours}:00`;
   };

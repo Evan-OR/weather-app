@@ -1,8 +1,10 @@
 import React from 'react';
 
 function CurrentInfo(props) {
-  const { dayInfo, getTimeFromTimestamp, timeZoneOffest } = props;
-  const tempInfo = dayInfo.temp;
+  const { currentHourData, currentDayData, getTimeFromTimestamp, timeZoneOffest } = props;
+  const tempInfo = currentHourData.main;
+  const windInfo = currentHourData.wind;
+  const sunRiseSetInfo = currentDayData.sys;
   const d = new Date();
 
   const roundNumber = (num) => Math.round(num);
@@ -17,9 +19,7 @@ function CurrentInfo(props) {
             <i className="fas fa-thermometer-three-quarters"></i>
           </div>
           <div className="column-content">
-            <div className="element-value">
-              {roundNumber(tempInfo.max)}&deg;
-            </div>
+            <div className="element-value">{roundNumber(currentHourData.main.temp_max)}&deg;</div>
             <div className="element-sub-heading">High</div>
           </div>
         </div>
@@ -28,9 +28,7 @@ function CurrentInfo(props) {
             <i className="fas fa-thermometer-empty"></i>
           </div>
           <div className="column-content">
-            <div className="element-value">
-              {roundNumber(tempInfo.min)}&deg;
-            </div>
+            <div className="element-value">{roundNumber(tempInfo.temp_min)}&deg;</div>
             <div className="element-sub-heading">Low</div>
           </div>
         </div>
@@ -42,9 +40,7 @@ function CurrentInfo(props) {
             <i className="fas fa-wind"></i>
           </div>
           <div className="column-content">
-            <div className="element-value">
-              {roundNumber(dayInfo.speed)}km/h
-            </div>
+            <div className="element-value">{roundNumber(windInfo.speed)}km/h</div>
             <div className="element-sub-heading">Wind</div>
           </div>
         </div>
@@ -53,9 +49,7 @@ function CurrentInfo(props) {
             <i className="fas fa-cloud-rain"></i>
           </div>
           <div className="column-content">
-            <div className="element-value">
-              {roundNumber(dayInfo.pop * 100)}%
-            </div>
+            <div className="element-value">{roundNumber(currentHourData.pop * 100)}%</div>
             <div className="element-sub-heading">Rain</div>
           </div>
         </div>
@@ -69,9 +63,7 @@ function CurrentInfo(props) {
           </div>
           <div className="column-content">
             <div className="element-value">
-              {getTimeFromTimestamp(
-                dayInfo.sunrise + timeZoneOffest + d.getTimezoneOffset() * 60
-              )}
+              {getTimeFromTimestamp(sunRiseSetInfo.sunrise + timeZoneOffest + d.getTimezoneOffset() * 60)}
             </div>
             <div className="element-sub-heading">Sunrise</div>
           </div>
@@ -82,9 +74,7 @@ function CurrentInfo(props) {
           </div>
           <div className="column-content">
             <div className="element-value">
-              {getTimeFromTimestamp(
-                dayInfo.sunset + timeZoneOffest + d.getTimezoneOffset() * 60
-              )}
+              {getTimeFromTimestamp(sunRiseSetInfo.sunset + timeZoneOffest + d.getTimezoneOffset() * 60)}
             </div>
             <div className="element-sub-heading">Sunset</div>
           </div>

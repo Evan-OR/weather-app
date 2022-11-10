@@ -4,11 +4,10 @@ import HourlyCard from './HourlyCard';
 import WeatherGraph from './WeatherGraph';
 
 function WeatherDisplay(props) {
-  const { hourlyData, dailyData } = props;
-  const currentTemp = Math.round(hourlyData.list[0].main.temp);
-  const currentWeather = hourlyData.list[0].weather[0];
+  const { hourlyData, currentData } = props;
+  const currentTemp = Math.round(currentData.main.temp);
+  const currentWeather = currentData;
   const hourlyWeather = hourlyData.list;
-  const dailyWeatherList = dailyData.list.slice(0, 7);
 
   const getTimeFromTimeZoneOffset = (timezoneOffset) => {
     const offsetInMinutes = timezoneOffset / 60;
@@ -20,10 +19,8 @@ function WeatherDisplay(props) {
 
   const getTimeFromTimestamp = (timestamp) => {
     const date = new Date(timestamp * 1000);
-    const hours =
-      date.getHours() < 10 ? `0${date.getHours()}` : date.getHours();
-    const mins =
-      date.getMinutes() < 10 ? `0${date.getMinutes()}` : date.getMinutes();
+    const hours = date.getHours() < 10 ? `0${date.getHours()}` : date.getHours();
+    const mins = date.getMinutes() < 10 ? `0${date.getMinutes()}` : date.getMinutes();
     return `${hours}:${mins}`;
   };
 
@@ -66,11 +63,11 @@ function WeatherDisplay(props) {
       case '50n':
         return <i className="fas fa-smog"></i>;
       default:
-        console.log('BROKE');
+      // console.log('BROKE');
     }
   };
 
-  const localTime = getTimeFromTimeZoneOffset(dailyData.city.timezone);
+  const localTime = getTimeFromTimeZoneOffset(currentData.timezone);
   const formatTime = (time) => {
     return time < 10 ? `0${time}` : time;
   };
@@ -83,24 +80,19 @@ function WeatherDisplay(props) {
           <div className="location">
             {hourlyData.city.name}, {hourlyData.city.country}
           </div>
-          <div className="date">{`${formatTime(
-            localTime.getHours()
-          )}:${formatTime(
+          <div className="date">{`${formatTime(localTime.getHours())}:${formatTime(
             localTime.getMinutes()
           )} ${localTime.toDateString()}`}</div>
         </div>
         <div className="current-weather-info">
-          <CurrentTemp
-            temp={currentTemp}
-            weather={currentWeather}
-            renderIcon={renderIcon}
-          />
+          <CurrentTemp temp={currentTemp} weather={currentWeather.weather} renderIcon={renderIcon} />
           <div className="current-divider"></div>
           {/* Middle Weather info */}
           <CurrentInfo
-            dayInfo={dailyData.list[0]}
+            currentHourData={hourlyData.list[0]}
+            currentDayData={currentData}
             getTimeFromTimestamp={getTimeFromTimestamp}
-            timeZoneOffest={dailyData.city.timezone}
+            timeZoneOffest={currentData.timezone}
           />
         </div>
         {/* Hourly weather cards */}
@@ -111,13 +103,11 @@ function WeatherDisplay(props) {
               <HourlyCard
                 key={el.dt}
                 temp={el.main.temp}
-                weather={el.weather[0].icon}
+                weather={el.weather[0]}
                 pop={el.pop}
                 renderIcon={renderIcon}
                 timeInfo={{
-                  initialTime: getTimeFromTimeZoneOffset(
-                    dailyData.city.timezone
-                  ),
+                  initialTime: getTimeFromTimeZoneOffset(currentData.timezone),
                   index: hourlyWeather.indexOf(el),
                 }}
               />
@@ -125,7 +115,11 @@ function WeatherDisplay(props) {
           </div>
         </div>
       </div>
-      <WeatherGraph dailyWeather={dailyWeatherList} />
+      <WeatherGraph
+        hourlyWeather={hourlyWeather}
+        getTimeFromTimestamp={getTimeFromTimestamp}
+        getTimeFromTimeZoneOffset={getTimeFromTimeZoneOffset}
+      />
     </>
   );
 }

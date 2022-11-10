@@ -2,31 +2,20 @@ import React from 'react';
 import { Line } from 'react-chartjs-2';
 
 function TempGraph(props) {
-  const { getDaysOfWeek, maxTempArray, minTempArray, roundToNearestFive } =
-    props;
+  const { generateLabels, maxTempArray, minTempArray, roundToNearestFive } = props;
 
   const data = {
-    labels: getDaysOfWeek(),
+    labels: generateLabels(),
     datasets: [
       {
-        label: 'Min Temp',
-        data: minTempArray,
-        borderColor: 'rgba(3, 152, 252, 1)',
-        backgroundColor: 'rgba(3, 152, 252, 0.5)',
-        pointBackgroundColor: 'rgb(3, 152, 252)',
-        pointBorderColor: 'rgb(3, 152, 252)',
-        tension: 0.3,
-        fill: true,
-      },
-      {
-        label: 'Max Temp',
+        label: 'Temperature',
         data: maxTempArray,
         borderColor: 'rgba(235, 156, 52, 1)',
         backgroundColor: 'rgba(235, 156, 52, 0.5)',
         pointBackgroundColor: 'rgb(235, 156, 52)',
         pointBorderColor: 'rgb(235, 156, 52)',
         tension: 0.3,
-        fill: true,
+        fill: false,
       },
     ],
   };

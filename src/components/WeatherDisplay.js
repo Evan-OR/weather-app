@@ -106,7 +106,7 @@ function WeatherDisplay(props) {
                 weather={el.weather[0]}
                 pop={el.pop}
                 renderIcon={renderIcon}
-                time={getTimeFromTimestamp(el.dt)}
+                time={getTimeFromTimestamp(el.dt + currentData.timezone)}
               />
             ))}
           </div>
@@ -115,7 +115,7 @@ function WeatherDisplay(props) {
       <WeatherGraph
         hourlyWeather={hourlyWeather}
         getTimeFromTimestamp={getTimeFromTimestamp}
-        getTimeFromTimeZoneOffset={getTimeFromTimeZoneOffset}
+        timeZoneOffest={currentData.timezone}
       />
     </>
   );

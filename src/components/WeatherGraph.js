@@ -3,34 +3,18 @@ import PrecipitationGraph from './PrecipitationGraph';
 import TempGraph from './TempGraph';
 
 function WeatherGraph(props) {
-  const { hourlyWeather, getTimeFromTimestamp, getTimeFromTimeZoneOffset } = props;
+  const { hourlyWeather, getTimeFromTimestamp, timeZoneOffest } = props;
   const [displayTemp, setDisplayTemp] = useState(true);
-  const tempArray = hourlyWeather.map((el) => Math.round(el.main.temp_max));
+  const tempArray = hourlyWeather.map((el) => Math.round(el.main.temp_max)).slice(0, 16);
   const minTempArray = hourlyWeather.map((el) => Math.round(el.main.temp_min));
-  const popArray = hourlyWeather.map((el) => Math.round(el.pop * 100));
+  const popArray = hourlyWeather.map((el) => Math.round(el.pop * 100)).slice(0, 16);
 
   const roundToNearestFive = (num) => {
     return Math.ceil(num / 5) * 5;
   };
 
-  const getDaysOfWeek = () => {
-    const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-    let graphDays = [];
-    let startingNum = new Date().getDay();
-
-    for (let i = 0; i < 7; i++) {
-      if (startingNum + i > 6) {
-        startingNum = -i - 1;
-      } else {
-        graphDays.push(daysOfWeek[startingNum + i]);
-      }
-    }
-
-    return graphDays;
-  };
-
   const generateLabels = () => {
-    return hourlyWeather.map((el) => getTimeFromTimestamp(el.dt));
+    return hourlyWeather.map((el) => getTimeFromTimestamp(el.dt + timeZoneOffest)).slice(0, 16);
   };
 
   return (

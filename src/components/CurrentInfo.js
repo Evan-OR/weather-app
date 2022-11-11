@@ -2,7 +2,6 @@ import React from 'react';
 
 function CurrentInfo(props) {
   const { currentHourData, currentDayData, getTimeFromTimestamp, timeZoneOffest } = props;
-  const tempInfo = currentHourData.main;
   const windInfo = currentHourData.wind;
   const sunRiseSetInfo = currentDayData.sys;
   const d = new Date();

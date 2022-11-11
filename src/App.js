@@ -42,34 +42,12 @@ function App() {
 
     setHourlyData(hWeather);
     setCurrentWeather(cWeather);
-    setLoading('false');
 
-    // try {
-    //   const currentWeatherRequest = await fetch(
-    //     `https://api.openweathermap.org/data/2.5/weather?q=${search}&appid=${api_key}&units=metric`
-    //   );
-    //   const cWeather = await currentWeatherRequest.json();
-
-    //   const hourlyWeatherRequest = await fetch(
-    //     `https://api.openweathermap.org/data/2.5/forecast?q=${search}&appid=${api_key}&units=metric`
-    //   );
-    //   const hWeather = await hourlyWeatherRequest.json();
-
-    //   console.log('current Weather', cWeather);
-    //   console.log('hourly Weather', hWeather);
-
-    //   setHourlyData(hWeather);
-    //   setCurrentWeather(cWeather);
-    //   // Check if failed to find location
-    //   if (cWeather.cod !== '200' || hWeather.cod !== '200') {
-    //     setLoading('failed');
-    //   } else {
-    //     setLoading('false');
-    //   }
-    // } catch (err) {
-    //   console.log('Fetch failed');
-    //   setLoading('failed');
-    // }
+    if (cWeather.cod.toString().charAt(0) === '4' || hWeather.cod.toString().charAt(0) === '4') {
+      setLoading('failed');
+    } else {
+      setLoading('false');
+    }
   };
 
   useEffect(() => {

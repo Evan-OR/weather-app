@@ -5,19 +5,11 @@ $shadow-color: #1f1f1f98;
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
+    'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: linear-gradient(
-    to left bottom,
-    #24b0c4,
-    #20a1b3,
-    #1c92a3,
-    #188393,
-    #147583
-  );
+  background-image: linear-gradient(to left bottom, #24b0c4, #20a1b3, #1c92a3, #188393, #147583);
 
   background-color: rgb(41, 41, 41);
   box-sizing: border-box;
@@ -27,8 +19,7 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 @mixin card {
   width: 80%;
@@ -62,7 +53,7 @@ code {
   align-items: center;
   user-select: none;
   margin: 10px 0 50px 0;
-  filter: drop-shadow(0 0 10px $shadow-color);
+  // filter: drop-shadow(0 0 10px $shadow-color);
 
   .icon {
     font-size: 42px;
